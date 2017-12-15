@@ -12,6 +12,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+	<style type="text/css">
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 90px; /* Set the fixed height of the footer here */
+            line-height: 60px;
+            background-color: #f5f5f5;
+        }
+
+        #clock {
+            font-family: monospace; /* Obriga todos os numeros do relogio terem a mesma largura */
+        }
+	</style>
 </head>
 <body>
     <div id="app">
@@ -70,13 +85,53 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
-    <footer class="fixed-bottom">
-        Rodape vem aqui!
-    </footer>
+	<footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+						<div class="panel-body">
+                            <div class="col-md-8">
+                                <span id="clock">00:00:00</span> | <span>São Paulo</span> - <span id="temp">0</span>º
+                            </div>
+                            <div class="col-md-offset-4">
+                                <!-- Branding Image -->
+                                <a class="navbar-brand" href="{{ url('/') }}">
+                                    {{ config('app.name', 'Laravel') }}
+                                </a>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- Mover para app.js quando sobrar tempo -->
+    <script type="text/javascript">
+        // Mantem numeros com 2 digitos
+        function ct(i) { return (i < 10) ? '0' + i : i; }
+
+        // Inicia o relogio ao carregar a funcao
+		+function startClock() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            $('#clock').html(ct(h) + ":" + ct(m) + ":" + ct(s));
+            setTimeout(startClock, 500);
+         }();
+
+        // Atualiza a temperatura atual de SP uma vez por minuto (free plan)
+        +function startWeather() {
+            var aMinute = 60000;
+            $('#temp').load("{{ config('app.url') }}/weather");
+            setTimeout(startWeather, aMinute);
+        }();
+    </script>
 </body>
 </html>
