@@ -68,6 +68,12 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/property') }}">Imóveis</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
