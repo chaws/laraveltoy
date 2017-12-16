@@ -41,6 +41,10 @@ Este projeto encontra-se hospedado em uma droplet da DigitalOcean, configurado c
 
 ## Melhorias
 O projeto foi desenvolvido em 4 noites + 1 madrugada, logo é esperado encontrar **bugs**. Além de bugs, note que o site **NÃO** está habilitado com SSL, logo **NÃO** utilize senhas reais caso queira testar a aplicação criando, por exemplo, um registro com senha.
+Pontos a melhorar:
+* Criar testes (PHPUnit)
+* Criar documentação (Doxygen?)
+* Configurar HTTPS com certificado auto assinado
 
 
 Dicas e sugestões são bem-vindas!
