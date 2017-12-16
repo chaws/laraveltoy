@@ -23,6 +23,9 @@ class ConfigServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        config(['config/weather.php',]);
+        config([
+            'config/weather.php',
+            'config/news.php',
+        ]);
     }
 }
