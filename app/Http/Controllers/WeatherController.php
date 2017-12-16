@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class WeatherController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function temp() {
         $host  = config('weather.host');
         $ver   = config('weather.version');
