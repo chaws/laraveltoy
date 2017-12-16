@@ -21,8 +21,14 @@ class PropertyController extends Controller
             'value' => 'required'
         ]);
 
-        // Adiciona no db
-        $prop = new Property;
+        // Adiciona ou atualiza no banco
+        if($request->input('id')) {
+            $prop = Property::find($request->input('id'));
+        }
+        else {
+            $prop = new Property;
+        }
+
         $prop->name = $request->input('name');
         $prop->value = $request->input('value');
         $prop->save();
@@ -32,5 +38,25 @@ class PropertyController extends Controller
 
     public function add() {
         return view('property.add');
+    }
+
+    public function edit($id) {
+        $prop = Property::find($id);
+        if(!isset($prop)) {
+            return redirect('/property')->with('errors', ['Número não encontrado!']);
+        }
+
+        return view('property.edit')->with('prop', $prop);
+    }
+
+    public function del($id) {
+        $prop = Property::find($id);
+        if(!isset($prop)) {
+            return redirect('/property')->with('errors', ['Número não encontrado!']);
+        }
+
+        $prop->delete();
+
+        return redirect('/property')->with('success', 'Número '. $id . ' foi deletado!');
     }
 }
