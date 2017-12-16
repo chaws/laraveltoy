@@ -13,20 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-	<style type="text/css">
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 90px; /* Set the fixed height of the footer here */
-            line-height: 60px;
-            background-color: #f5f5f5;
-        }
-
-        #clock {
-            font-family: monospace; /* Obriga todos os numeros do relogio terem a mesma largura */
-        }
-	</style>
+    @yield('page-style')
 </head>
 <body>
     <div id="app">
@@ -96,7 +83,7 @@
 	<footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
                     <div class="panel panel-default">
 						<div class="panel-body">
                             <div class="col-md-8">
@@ -116,6 +103,8 @@
 	</footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+    @yield('page-js')
 
     <!-- Mover para app.js quando sobrar tempo -->
     <script type="text/javascript">

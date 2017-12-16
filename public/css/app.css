@@ -8350,27 +8350,24 @@ button.close {
   }
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   margin-bottom: 90px;
-  /* Margin bottom by footer height */
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 90px;
-  /* Set the fixed height of the footer here */
-  line-height: 90px;
-  /* Vertically center the text there */
+  line-height: 60px;
   background-color: #f5f5f5;
+}
+
+#clock {
+  font-family: monospace;
+}
+
+.panel-heading {
+  background-color: #818181;
 }
 
